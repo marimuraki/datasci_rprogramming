@@ -40,20 +40,17 @@ rankhospital <- function(state, outcome, num = "best") {
     
     if (outcome == "heart attack") {
         outcome = "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack"
-        index = 11
     } else if (outcome == "heart failure") {
         outcome = "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure"
-        index = 17
     } else if (outcome == "pneumonia") {
         outcome = "Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia"
-        index = 23
     } else {
         stop("invalid outcome")
     }
     
     # Coerce column data to numeric
     
-    data.hospital[, index] <- suppressWarnings(as.numeric(data.hospital[, index]))
+    data.hospital[, outcome] <- suppressWarnings(as.numeric(data.hospital[, outcome]))
     
     # Subset data
     
